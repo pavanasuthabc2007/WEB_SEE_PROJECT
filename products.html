@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+
+    <title>Products - Smart Grocery Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Smart Grocery Store</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="checkout.html">Checkout</a>
+        </nav>
+    </header>
+
+    <main class="products-page">
+        <h2>All Products</h2>
+        
+        <section id="search-container">
+            <input type="text" id="searchBar" placeholder="Search products..." onkeyup="searchProducts()">
+        </section>
+
+       <nav id="category-filters">
+    <button class="filter-btn active" onclick="filterCategory('All')">All</button>
+    <button class="filter-btn" onclick="filterCategory('Fruits')">Fruits</button>
+    <button class="filter-btn" onclick="filterCategory('Vegetables')">Vegetables</button>
+    <button class="filter-btn" onclick="filterCategory('Dairy')">Dairy</button>
+    <button class="filter-btn" onclick="filterCategory('Snacks')">Snacks</button>
+    <button class="filter-btn" onclick="filterCategory('Oils/Ghee')">Oils/Ghee</button>
+    <button class="filter-btn" onclick="filterCategory('Cereals/DryFruits')">Cereals/DryFruits</button>
+    
+    <button class="filter-btn" onclick="filterCategory('Juices/Colddrinks')">Juices/Colddrinks</button>
+    
+</nav>
+
+
+
+<section id="product-list" class="product-grid content-section">
+
+    <!-- Fruits (8 items) -->
+    <div class="product" data-category="Fruits"><img src="images/apple.jpg"> <h3>Apple</h3><p>₹120/kg</p></div>
+    <div class="product" data-category="Fruits"><img src="images/banana.jpg"><h3>Banana</h3><p>₹50/dozen</p></div>
+    <div class="product" data-category="Fruits"><img src="images/orange.jpg"><h3>Orange</h3><p>₹90/kg</p></div>
+    <div class="product" data-category="Fruits"><img src="images/grapes.jpg"><h3>Grapes</h3><p>₹110/kg</p></div>
+    <div class="product" data-category="Fruits"><img src="images/mango.jpg"><h3>Mango</h3><p>₹150/kg</p></div>
+    <div class="product" data-category="Fruits"><img src="images/pineapple.jpg"><h3>Pineapple</h3><p>₹70</p></div>
+    <div class="product" data-category="Fruits"><img src="images/papaya.jpg"><h3>Papaya</h3><p>₹60</p></div>
+    <div class="product" data-category="Fruits"><img src="images/kiwi.jpg"><h3>Kiwi</h3><p>₹30/pc</p></div>
+
+    <!-- Vegetables (8 items) -->
+    <div class="product" data-category="Vegetables"><img src="images/tomato.jpg"><h3>Tomato</h3><p>₹40/kg</p></div>
+    <div class="product" data-category="Vegetables"><img src="images/potato.jpg"><h3>Potato</h3><p>₹30/kg</p></div>
+    <div class="product" data-category="Vegetables"><img src="images/onion.jpg"><h3>Onion</h3><p>₹35/kg</p></div>
+    <div class="product" data-category="Vegetables"><img src="images/carrot.jpg"><h3>Carrot</h3><p>₹50/kg</p></div>
+    <div class="product" data-category="Vegetables"><img src="images/cabbage.jpg"><h3>Cabbage</h3><p>₹40/kg</p></div>
+    <div class="product" data-category="Vegetables"><img src="images/beans.jpg"><h3>Beans</h3><p>₹60/kg</p></div>
+    <div class="product" data-category="Vegetables"><img src="images/beetroot.jpg"><h3>Beetroot</h3><p>₹45/kg</p></div>
+    <div class="product" data-category="Vegetables"><img src="images/capsicum.jpg"><h3>Capsicum</h3><p>₹80/kg</p></div>
+
+    <!-- Dairy (8 items) -->
+    <div class="product" data-category="Dairy"><img src="images/milk.jpg"><h3>Milk</h3><p>₹56/litre</p></div>
+    <div class="product" data-category="Dairy"><img src="images/curd.jpg"><h3>Curd</h3><p>₹30</p></div>
+    <div class="product" data-category="Dairy"><img src="images/paneer.jpg"><h3>Paneer</h3><p>₹180/kg</p></div>
+    <div class="product" data-category="Dairy"><img src="images/butter.jpg"><h3>Butter</h3><p>₹50</p></div>
+    <div class="product" data-category="Dairy"><img src="images/ghee.jpg"><h3>Ghee</h3><p>₹500</p></div>
+    <div class="product" data-category="Dairy"><img src="images/cheese.jpg"><h3>Cheese</h3><p>₹90</p></div>
+    <div class="product" data-category="Dairy"><img src="images/lassi.jpg"><h3>Lassi</h3><p>₹25</p></div>
+    <div class="product" data-category="Dairy"><img src="images/icecream.jpg"><h3>Ice Cream</h3><p>₹70</p></div>
+
+    <!-- Snacks (8 items) -->
+    <div class="product" data-category="Snacks"><img src="images/chips.jpg"><h3>Chips</h3><p>₹20</p></div>
+    <div class="product" data-category="Snacks"><img src="images/biscuits.jpg"><h3>Biscuits</h3><p>₹30</p></div>
+    <div class="product" data-category="Snacks"><img src="images/chocolate.jpg"><h3>Chocolate</h3><p>₹40</p></div>
+    <div class="product" data-category="Snacks"><img src="images/noodles.jpg"><h3>Noodles</h3><p>₹50</p></div>
+    <div class="product" data-category="Snacks"><img src="images/kurkure.jpg"><h3>Kurkure</h3><p>₹10</p></div>
+    <div class="product" data-category="Snacks"><img src="images/popcorn.jpg"><h3>Popcorn</h3><p>₹25</p></div>
+    <div class="product" data-category="Snacks"><img src="images/cookies.jpg"><h3>Cookies</h3><p>₹35</p></div>
+    <div class="product" data-category="Snacks"><img src="images/cake.jpg"><h3>Cake</h3><p>₹60</p></div>
+
+    <!-- Oils & Ghee (8 items) -->
+    <div class="product" data-category="Oils/Ghee"><img src="images/sunflower.jpg"><h3>Sunflower Oil</h3><p>₹140/litre</p></div>
+    <div class="product" data-category="Oils/Ghee"><img src="images/groundnut.jpg"><h3>Groundnut Oil</h3><p>₹160/litre</p></div>
+    <div class="product" data-category="Oils/Ghee"><img src="images/coconut-oil.jpg"><h3>Coconut Oil</h3><p>₹120</p></div>
+    <div class="product" data-category="Oils/Ghee"><img src="images/olive-oil.jpg"><h3>Olive Oil</h3><p>₹200</p></div>
+    <div class="product" data-category="Oils/Ghee"><img src="images/mustard-oil.jpg"><h3>Mustard Oil</h3><p>₹150</p></div>
+    <div class="product" data-category="Oils/Ghee"><img src="images/vanaspati.jpg"><h3>Vanaspati</h3><p>₹110</p></div>
+    <div class="product" data-category="Oils/Ghee"><img src="images/desi-ghee.jpg"><h3>Desi Ghee</h3><p>₹550</p></div>
+    <div class="product" data-category="Oils/Ghee"><img src="images/palm-oil.jpg"><h3>Palm Oil</h3><p>₹90</p></div>
+
+    <!-- Cereals & Dry Fruits (8 items) -->
+    <div class="product" data-category="Cereals/DryFruits"><img src="images/rice.jpg"><h3>Rice</h3><p>₹55/kg</p></div>
+    <div class="product" data-category="Cereals/DryFruits"><img src="images/wheat.jpg"><h3>Wheat</h3><p>₹45/kg</p></div>
+    <div class="product" data-category="Cereals/DryFruits"><img src="images/jowar.jpg"><h3>Jowar</h3><p>₹40/kg</p></div>
+    <div class="product" data-category="Cereals/DryFruits"><img src="images/bajra.jpg"><h3>Bajra</h3><p>₹35/kg</p></div>
+    <div class="product" data-category="Cereals/DryFruits"><img src="images/almonds.jpg"><h3>Almonds</h3><p>₹700/kg</p></div>
+    <div class="product" data-category="Cereals/DryFruits"><img src="images/cashews.jpg"><h3>Cashews</h3><p>₹800/kg</p></div>
+    <div class="product" data-category="Cereals/DryFruits"><img src="images/walnuts.jpg"><h3>Walnuts</h3><p>₹900/kg</p></div>
+    <div class="product" data-category="Cereals/DryFruits"><img src="images/raisins.jpg"><h3>Raisins</h3><p>₹450/kg</p></div>
+
+    <!-- Juices & Cold Drinks (8 items) -->
+    <div class="product" data-category="Juices/Colddrinks"><img src="images/maaza.jpg"><h3>Maaza</h3><p>₹45</p></div>
+    <div class="product" data-category="Juices/Colddrinks"><img src="images/slice.jpg"><h3>Slice</h3><p>₹45</p></div>
+    <div class="product" data-category="Juices/Colddrinks"><img src="images/frooti.jpg"><h3>Frooti</h3><p>₹20</p></div>
+    <div class="product" data-category="Juices/Colddrinks"><img src="images/cocacola.jpg"><h3>Coca-Cola</h3><p>₹40</p></div>
+    <div class="product" data-category="Juices/Colddrinks"><img src="images/pepsi.jpg"><h3>Pepsi</h3><p>₹40</p></div>
+    <div class="product" data-category="Juices/Colddrinks"><img src="images/real-mango.jpg"><h3>Real Mango Juice</h3><p>₹110</p></div>
+    <div class="product" data-category="Juices/Colddrinks"><img src="images/redbull.jpg"><h3>Red Bull</h3><p>₹120</p></div>
+    <div class="product" data-category="Juices/Colddrinks"><img src="images/7up.jpg"><h3>7UP</h3><p>₹35</p></div>
+<p id="no-products-msg" style="display:none; text-align:center; font-weight:bold; margin-top:20px;">Product not available</p>
+
+</section>
+
+
+
+        
+    </main>
+
+
+    <script src="js/script.js"></script>
+ 
+
+</body>
+</html>

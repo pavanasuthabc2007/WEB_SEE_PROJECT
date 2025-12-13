@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Grocery Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+
+
+    <script>
+if (!localStorage.getItem("loggedInUser")) {
+    window.location.href = "login.html";
+}
+</script>
+
+</head>
+<body>
+
+    <header>
+    <div class="profile-wrapper">
+    <div class="profile-avatar" onclick="toggleProfileDropdown()">
+        👤
+    </div>
+
+    <div class="profile-dropdown" id="profileDropdown">
+        <p class="profile-name" id="profileName"></p>
+        <p class="profile-phone" id="profilePhone"></p>
+        <hr>
+        <button onclick="logout()">Logout</button>
+    </div>
+</div>
+
+        <h1>Smart Grocery Store</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="checkout.html">Checkout</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Banner -->
+        <section id="banner" class="content-section">
+            <div class="banner-content">
+                <h2>Fresh Groceries Delivered to Your Home</h2>
+                <p>Shop fresh fruits, vegetables, and daily essentials with fast delivery.</p>
+                <a href="products.html" class="primary-button">Shop Now</a>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="content-section">
+            <h2>Shop by Category</h2>
+            <ul class="category-grid">
+                <li class="category-tile" data-category="Fruits">
+                    <img src="images/apple.jpg" alt="Fruits">
+                    <span>Fruits</span>
+                </li>
+                <li class="category-tile" data-category="Vegetables">
+                    <img src="images/tomato.jpg" alt="Vegetables">
+                    <span>Vegetables</span>
+                </li>
+                <li class="category-tile" data-category="Dairy">
+                    <img src="images/milk.jpg" alt="Dairy">
+                    <span>Dairy</span>
+                </li>
+                <li class="category-tile" data-category="Snacks">
+                    <img src="images/chips.jpg" alt="Snacks">
+                    <span>Snacks</span>
+                </li>
+                <li class="category-tile" data-category="Oil/Ghee">
+                    <img src="images/groundnut.jpg" alt="Oil/Ghee">
+                    <span>Oil/Ghee</span>
+                </li>
+                <li class="category-tile" data-category="Juices/Colddrinks">
+                    <img src="images/maaza.jpg" alt="Juices/Colddrinks">
+                    <span>Juices/Colddrinks</span>
+                </li>
+                <li class="category-tile" data-category="Cereals/DryFruits">
+                    <img src="images/rice.jpg" alt="Cereals/DryFruits">
+                    <span>Cereals/DryFruits</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Featured Products -->
+        <section id="featured" class="content-section">
+            <h2>Featured Products</h2>
+            <div id="featured-products-grid" class="product-grid">
+                <div class="product-card" data-id="1">
+                    <img src="images/apple.jpg" alt="Apple">
+                    <h3>Apple</h3>
+                    <p>₹40</p>
+                    <button class="add-to-cart-btn" data-id="1">Add to Cart</button>
+                </div>
+                <div class="product-card" data-id="5">
+                    <img src="images/milk.jpg" alt="Milk">
+                    <h3>Milk</h3>
+                    <p>₹30</p>
+                    <button class="add-to-cart-btn" data-id="5">Add to Cart</button>
+                </div>
+                <div class="product-card" data-id="2">
+                    <img src="images/banana.jpg" alt="Banana">
+                    <h3>Banana</h3>
+                    <p>₹50/dozen</p>
+                    <button class="add-to-cart-btn" data-id="2">Add to Cart</button>
+                </div>
+                <div class="product-card" data-id="3">
+                    <img src="images/chips.jpg" alt="Chips">
+                    <h3>Chips</h3>
+                    <p>₹20</p>
+                    <button class="add-to-cart-btn" data-id="3">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; Shop with enjoy ! Pavanasutha and Nandhesh is here for all your grocery needs.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+   <script>
+function toggleProfileDropdown() {
+    const dropdown = document.getElementById("profileDropdown");
+    dropdown.style.display =
+        dropdown.style.display === "block" ? "none" : "block";
+}
+
+// Load user details
+document.addEventListener("DOMContentLoaded", function () {
+    const name = localStorage.getItem("loggedInUser");
+    const phone = localStorage.getItem("userPhone");
+
+    if (name && phone) {
+        document.getElementById("profileName").innerText = "👤 " + name;
+        document.getElementById("profilePhone").innerText = "📱 " + phone;
+    }
+});
+
+// Close dropdown when clicking outside
+document.addEventListener("click", function (event) {
+    const profile = document.querySelector(".profile-wrapper");
+    if (!profile.contains(event.target)) {
+        document.getElementById("profileDropdown").style.display = "none";
+    }
+});
+
+// Logout
+function logout() {
+    localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("userPhone");
+    window.location.href = "login.html";
+}
+</script>
+
+
+</body>
+</html>

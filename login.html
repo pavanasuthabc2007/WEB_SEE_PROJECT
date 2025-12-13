@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTP Login - Smart Grocery Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-body">
+
+<div class="auth-card">
+    <h2>Login with OTP</h2>
+
+    <input type="text" id="username" placeholder="Enter Username">
+    <input type="text" id="phone" placeholder="Enter Phone Number">
+
+    <button onclick="sendOTP()">Send OTP</button>
+
+    <div id="otpSection" style="display:none;">
+        <input type="text" id="otpInput" placeholder="Enter OTP">
+        <button onclick="verifyOTP()">Verify OTP</button>
+    </div>
+
+    <p id="msg"></p>
+</div>
+
+<script src="js/otp.js"></script>
+</body>
+</html>
