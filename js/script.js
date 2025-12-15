@@ -1,126 +1,115 @@
+/* =========================
+   CHECKOUT FORM VALIDATION
+========================= */
+
 function validateCheckout() {
-    event.preventDefault();     
-    let form = document.getElementById("checkoutForm");
-    if (!form) return;
 
-    form.addEventListener("submit", function (event) {
-        event.preventDefault();
+    let name = document.getElementById("fullName").value.trim();
+    let phone = document.getElementById("phoneNum").value.trim();
+    let address = document.getElementById("deliveryAddress").value.trim();
+    let pincode = document.getElementById("pincode").value.trim();
+    let msg = document.getElementById("orderMessage");
 
-        let name = document.getElementById("fullName").value.trim();
-        let phone = document.getElementById("phoneNum").value.trim();
-        let address = document.getElementById("deliveryAddress").value.trim();
-        let pincode = document.getElementById("pincode").value.trim();
+    if (name.length < 3) {
+        msg.style.color = "red";
+        msg.innerText = "Name must be at least 3 characters.";
+        return false;
+    }
 
-        // Message box
-        let msg = document.getElementById("orderMessage");
+    if (!/^[6-9]\d{9}$/.test(phone)) {
+        msg.style.color = "red";
+        msg.innerText = "Phone number must be 10 digits.";
+        return false;
+    }
 
-        // Validation
-        if (name.length < 3) {
-            msg.style.color = "red";
-            msg.innerText = "Name must be at least 3 characters.";
-            return;
-        }
+    if (address.length < 10) {
+        msg.style.color = "red";
+        msg.innerText = "Address must be at least 10 characters.";
+        return false;
+    }
 
-        if (!/^[6-9]\d{9}$/.test(phone)) {
-            msg.style.color = "red";
-            msg.innerText = "Phone number must be 10 digits.";
-            return;
-        }
+    if (!/^\d{6}$/.test(pincode)) {
+        msg.style.color = "red";
+        msg.innerText = "Pincode must be 6 digits.";
+        return false;
+    }
 
-        if (address.length < 10) {
-            msg.style.color = "red";
-            msg.innerText = "Address must be at least 10 characters.";
-            return;
-        }
+    // ✅ SUCCESS
+    msg.style.color = "green";
+    msg.innerText = "🎉 Your order has been placed successfully!";
 
-        if (!/^\d{6}$/.test(pincode)) {
-            msg.style.color = "red";
-            msg.innerText = "Pincode must be 6 digits.";
-            return;
-        }
+    // Clear cart AFTER order
+    localStorage.removeItem("cart");
+    localStorage.removeItem("cartTotal");
 
-        // SUCCESS MESSAGE
-        msg.style.color = "green";
-        msg.innerText = "🎉 Your order has been placed successfully!";
-      
-
-        // Clear form + cart
-       // form.reset();
-       
-
-        console.log("test")
-    });
+    return false; // stop actual submit (for project)
 }
-function filterCategory(category) {
+
+/* =========================
+   CATEGORY FILTER
+========================= */
+
+function filterCategory(category, btn) {
     let products = document.querySelectorAll(".product");
 
     products.forEach(product => {
         let productCategory = product.getAttribute("data-category");
-
-        if (category === "All" || productCategory === category) {
-            product.style.display = "block";
-        } else {
-            product.style.display = "none";
-        }
+        product.style.display =
+            category === "All" || productCategory === category ? "block" : "none";
     });
 
-    // Highlight active button
-    let buttons = document.querySelectorAll(".filter-btn");
-    buttons.forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll(".filter-btn")
+        .forEach(b => b.classList.remove("active"));
 
-    event.target.classList.add("active");
+    btn.classList.add("active");
 }
+
 /* =========================
-   AUTO ADD ADD-TO-CART BUTTONS
+   ADD TO CART
 ========================= */
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 document.querySelectorAll(".product").forEach(product => {
+
     let btn = document.createElement("button");
     btn.innerText = "Add to Cart";
     btn.className = "add-cart-btn";
 
-   btn.onclick = () => {
-    let name = product.querySelector("h3").innerText;
-    let priceText = product.querySelector("p").innerText;
-    let price = parseInt(priceText.replace(/\D/g, ""));
-    let img = product.querySelector("img").src;  // ← ADD THIS
+    btn.onclick = () => {
+        let name = product.querySelector("h3").innerText;
+        let price = parseInt(product.querySelector("p").innerText.replace(/\D/g, ""));
+        let img = product.querySelector("img").src;
 
-    let existing = cart.find(item => item.name === name);
+        let existing = cart.find(item => item.name === name);
 
-    if (existing) {
-        existing.qty += 1;
-    } else {
-        cart.push({ name, price, qty: 1, img });  // ← ADD IMAGE HERE
-    }
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push({ name, price, qty: 1, img });
+        }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(name + " added to cart");
-};
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(name + " added to cart");
+    };
 
     product.appendChild(btn);
 });
 
-/*----cart--*/
+/* =========================
+   SEARCH PRODUCTS
+========================= */
 
-function buyNow() {
-    if (cart.length === 0) {
-        alert("Your cart is empty");
-        return;
-    }
-    window.location.href = "checkout.html";
-}
 function searchProducts() {
-    const searchInput = document.getElementById("searchBar").value.toLowerCase();
+    const input = document.getElementById("searchBar").value.toLowerCase();
     const products = document.querySelectorAll(".product");
-    const noProductsMsg = document.getElementById("no-products-msg");
+    const msg = document.getElementById("no-products-msg");
 
     let found = false;
 
     products.forEach(product => {
-        const productName = product.querySelector("h3").innerText.toLowerCase();
-
-        if (productName.includes(searchInput)) {
+        let name = product.querySelector("h3").innerText.toLowerCase();
+        if (name.includes(input)) {
             product.style.display = "block";
             found = true;
         } else {
@@ -128,11 +117,18 @@ function searchProducts() {
         }
     });
 
-    // Show "Product not available" message if nothing matches
-    if (!found) {
-        noProductsMsg.style.display = "block";
-    } else {
-        noProductsMsg.style.display = "none";
-    }
+    msg.style.display = found ? "none" : "block";
 }
 
+/* =========================
+   SHOW TOTAL IN CHECKOUT
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const total = localStorage.getItem("cartTotal");
+    const totalDiv = document.getElementById("checkoutTotal");
+
+    if (totalDiv && total) {
+        totalDiv.innerText = "Total Amount to Pay: ₹" + total;
+    }
+});
