@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Cart - Smart Grocery Store</title>
+    <title>Your Cart</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Smart Grocery Store</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="products.html">Products</a>
-            <a href="cart.html">Cart</a>
-            <a href="checkout.html">Checkout</a>
-        </nav>
-    </header>
+<header>
+    <h1>Smart Grocery Store</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
 
-    <main class="cart-page">
-        <h2>Your Cart</h2>
+<main class="cart-page">
+    <h2>Your Cart</h2>
 
-        <div id="cart-content-wrapper">
-            <section id="cart-items">
-                <ul id="cart-list">
-                    </ul>
-            </section>
+    <div id="cart-items"></div>
 
-           
-        </div>
-    </main>
+    <h3 id="total"></h3>
+    <button class="buy-btn" onclick="buyNow()">Buy Now</button>
 
-    
+</main>
 
-    <script src="js/script.js"></script>
+<script src="js/cart.js"></script>
 </body>
 </html>
