@@ -14,7 +14,7 @@ body {
 
 /* --------------------------- Header --------------------------- */
 header {
-    background-color: blue; /* dark blue header */
+    background-color:  rgb(74, 16, 16); /* dark blue header */
     color: white;
     padding: 20px 40px;
     display: flex;
