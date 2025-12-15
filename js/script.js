@@ -132,3 +132,4 @@ document.addEventListener("DOMContentLoaded", () => {
         totalDiv.innerText = "Total Amount to Pay: ₹" + total;
     }
 });
+
