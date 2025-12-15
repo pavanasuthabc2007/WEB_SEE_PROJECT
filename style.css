@@ -14,7 +14,7 @@ body {
 
 /* --------------------------- Header --------------------------- */
 header {
-    background-color: green; /* dark blue header */
+    background-color: maroon; /* dark blue header */
     color: white;
     padding: 20px 40px;
     display: flex;
