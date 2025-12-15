@@ -70,4 +70,44 @@ function filterCategory(category) {
 
     event.target.classList.add("active");
 }
+/* =========================
+   AUTO ADD ADD-TO-CART BUTTONS
+========================= */
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+document.querySelectorAll(".product").forEach(product => {
+    let btn = document.createElement("button");
+    btn.innerText = "Add to Cart";
+    btn.className = "add-cart-btn";
+
+   btn.onclick = () => {
+    let name = product.querySelector("h3").innerText;
+    let priceText = product.querySelector("p").innerText;
+    let price = parseInt(priceText.replace(/\D/g, ""));
+    let img = product.querySelector("img").src;  // ← ADD THIS
+
+    let existing = cart.find(item => item.name === name);
+
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({ name, price, qty: 1, img });  // ← ADD IMAGE HERE
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(name + " added to cart");
+};
+
+    product.appendChild(btn);
+});
+
+/*----cart--*/
+
+function buyNow() {
+    if (cart.length === 0) {
+        alert("Your cart is empty");
+        return;
+    }
+    window.location.href = "checkout.html";
+}
 
