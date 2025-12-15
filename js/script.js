@@ -110,4 +110,29 @@ function buyNow() {
     }
     window.location.href = "checkout.html";
 }
+function searchProducts() {
+    const searchInput = document.getElementById("searchBar").value.toLowerCase();
+    const products = document.querySelectorAll(".product");
+    const noProductsMsg = document.getElementById("no-products-msg");
+
+    let found = false;
+
+    products.forEach(product => {
+        const productName = product.querySelector("h3").innerText.toLowerCase();
+
+        if (productName.includes(searchInput)) {
+            product.style.display = "block";
+            found = true;
+        } else {
+            product.style.display = "none";
+        }
+    });
+
+    // Show "Product not available" message if nothing matches
+    if (!found) {
+        noProductsMsg.style.display = "block";
+    } else {
+        noProductsMsg.style.display = "none";
+    }
+}
 
