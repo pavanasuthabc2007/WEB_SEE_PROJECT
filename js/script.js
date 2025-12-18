@@ -1,3 +1,16 @@
+// Get category from URL
+const urlParams = new URLSearchParams(window.location.search);
+const selectedCategory = urlParams.get('category');
+
+if (selectedCategory) {
+    filterCategory(selectedCategory); // show only selected category
+    // Highlight the selected button
+    const buttons = document.querySelectorAll('#category-filters .filter-btn');
+    buttons.forEach(btn => {
+        btn.classList.toggle('active', btn.textContent === selectedCategory);
+    });
+}
+/*--checkout---*/
 function validateCheckout() {
     event.preventDefault();     
     let form = document.getElementById("checkoutForm");
@@ -39,18 +52,16 @@ function validateCheckout() {
             return;
         }
 
-        // SUCCESS MESSAGE
-        msg.style.color = "green";
-        msg.innerText = "🎉 Your order has been placed successfully!";
-      
+       
 
-        // Clear form + cart
+      
        // form.reset();
        
 
         console.log("test")
     });
 }
+/*----filter category ----*/
 function filterCategory(category) {
     let products = document.querySelectorAll(".product");
 
@@ -149,6 +160,7 @@ function searchProducts() {
         noProductsMsg.style.display = "none";
     }
 }
+
 
 
 
