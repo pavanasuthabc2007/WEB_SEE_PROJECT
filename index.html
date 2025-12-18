@@ -71,63 +71,77 @@ if (!localStorage.getItem("loggedInUser")) {
             <h2>Shop by Category</h2>
             <ul class="category-grid">
                 <li class="category-tile" data-category="Fruits">
+                      <a href="products.html?category=Fruits">
                     <img src="images/apple.jpg" alt="Fruits">
                     <span>Fruits</span>
+                    </a>
                 </li>
                 <li class="category-tile" data-category="Vegetables">
+                     <a href="products.html?category=Vegetables">
                     <img src="images/tomato.jpg" alt="Vegetables">
                     <span>Vegetables</span>
+                    </a>
                 </li>
                 <li class="category-tile" data-category="Dairy">
+                     <a href="products.html?category=Dairy">
                     <img src="images/milk.jpg" alt="Dairy">
                     <span>Dairy</span>
+                    </a>
                 </li>
                 <li class="category-tile" data-category="Snacks">
+                     <a href="products.html?category=Snacks">
                     <img src="images/chips.jpg" alt="Snacks">
                     <span>Snacks</span>
+                    </a>
                 </li>
                 <li class="category-tile" data-category="Oil/Ghee">
+                     <a href="products.html?category=Oil/Ghee">
                     <img src="images/groundnut.jpg" alt="Oil/Ghee">
                     <span>Oil/Ghee</span>
+                    </a>
                 </li>
                 <li class="category-tile" data-category="Juices/Colddrinks">
+                     <a href="products.html?category=Juices/Colddrinks">
                     <img src="images/maaza.jpg" alt="Juices/Colddrinks">
                     <span>Juices/Colddrinks</span>
+                    </a>
                 </li>
                 <li class="category-tile" data-category="Cereals/DryFruits">
+                     <a href="products.html?category=Cereals/DryFruits">
                     <img src="images/rice.jpg" alt="Cereals/DryFruits">
                     <span>Cereals/DryFruits</span>
-                </li>
+                    </a>
+                 </li>
             </ul>
         </section>
 
         <!-- Featured Products -->
         <section id="featured" class="content-section">
-            <h2>Best Selling Products</h2>
+            <h2>Featured Products</h2>
             <div id="featured-products-grid" class="product-grid">
                 <div class="product-card" data-id="1">
                     <img src="images/apple.jpg" alt="Apple">
                     <h3>Apple</h3>
                     <p>₹40</p>
-                   
+                    <button class="add-to-cart-btn" data-id="1">Add to Cart</button>
                 </div>
                 <div class="product-card" data-id="5">
                     <img src="images/milk.jpg" alt="Milk">
                     <h3>Milk</h3>
                     <p>₹30</p>
-                 
+                    <button class="add-to-cart-btn" data-id="5">Add to Cart</button>
                 </div>
                 <div class="product-card" data-id="2">
                     <img src="images/banana.jpg" alt="Banana">
                     <h3>Banana</h3>
                     <p>₹50/dozen</p>
-                    
+                    <button class="add-to-cart-btn" data-id="2">Add to Cart</button>
                 </div>
                 <div class="product-card" data-id="3">
                     <img src="images/chips.jpg" alt="Chips">
                     <h3>Chips</h3>
                     <p>₹20</p>
-                   
+                    <button class="add-to-cart-btn" data-id="3">Add to Cart</button>
                 </div>
             </div>
         </section>
@@ -171,7 +185,5 @@ function logout() {
     window.location.href = "login.html";
 }
 </script>
-
-
 </body>
 </html>
