@@ -27,7 +27,6 @@
     </header>
 
     <h2>Checkout</h2>
-    
 
     <main class="checkout-page">
         
@@ -37,62 +36,74 @@
             <!-- LEFT SIDE: FORM -->
             <section id="billing-shipping" >
 
-                <form id="checkoutForm" onsubmit="return validateCheckout()">
+           <form id="checkoutForm">
 
-                    <!-- SHIPPING DETAILS -->
-                    <fieldset class="form-box">
-                        <legend>Shipping Details</legend>
+    <!-- SHIPPING DETAILS -->
+    <fieldset class="form-box">
+        <legend>Shipping Details</legend>
 
-                        <div class="form-group full">
-                            <label for="fullName">Full Name</label>
-                            <input type="text" id="fullName" name="fullName" >
-                        </div>
+        <div class="form-group full">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName">
+        </div>
 
-                        <div class="form-group">
-                            <label for="phoneNum">Phone Number</label>
-                            <input type="tel" id="phoneNum" name="phoneNum" >
-                        </div>
+        <div class="form-group">
+            <label for="phoneNum">Phone Number</label>
+            <input type="tel" id="phoneNum" name="phoneNum">
+        </div>
 
-                        <div class="form-group full">
-                            <label for="deliveryAddress">Address</label>
-                            <textarea id="deliveryAddress" name="deliveryAddress" rows="3" ></textarea>
-                        </div>
+        <div class="form-group full">
+            <label for="deliveryAddress">Address</label>
+            <textarea id="deliveryAddress" rows="3"></textarea>
+        </div>
 
-                        <div class="form-group">
-                            <label for="pincode">Pincode</label>
-                            <input type="text" id="pincode" name="pincode" pattern="\d{6}" >
-                        </div>
-                    </fieldset>
+        <div class="form-group">
+            <label for="pincode">Pincode</label>
+            <input type="text" id="pincode">
+        </div>
+    </fieldset>
 
-                    <!-- PAYMENT METHOD -->
-                    <fieldset class="form-box">
-                        <legend>Payment Method</legend>
+    <!-- PAYMENT METHOD -->
+    <fieldset class="form-box">
+        <legend>Payment Method</legend>
 
-                        <div class="form-group full">
-                            <label><input type="radio" name="paymentMethod" value="COD" checked> Cash On Delivery</label>
-                        </div>
+        <label>
+            <input type="radio" name="paymentMethod" checked> Cash On Delivery
+        </label><br>
 
-                        <div class="form-group full">
-                            <label><input type="radio" name="paymentMethod" value="UPI"> UPI</label>
-                        </div>
-                    </fieldset>
-                    <h3 id="checkoutTotal" style="text-align:left; color:green;"></h3>
+        <label>
+            <input type="radio" name="paymentMethod"> UPI
+        </label>
+    </fieldset>
 
-                    <!-- SUBMIT BUTTON -->
-                    <button type="submit" class="primary-button">Place Order</button>
-                    <p id="orderMessage" style="text-align:center; font-weight:bold; margin-top:10px;"></p>
+    <!-- ✅ FIXED BUTTON -->
+    <button type="button" class="primary-button" onclick="showOrderSummary()">
+        Place Order
+    </button>
 
-                      
+</form>
 
-                </form>
 
             </section>
 
            
+   <!-- RIGHT SIDE: ORDER SUMMARY -->
+<section id="checkout-summary">
+    <h3>Your Order</h3>
+    <div id="order-items"></div>
+
+    <div class="summary-total">
+        <strong>Total:</strong>
+        <span id="summary-total-price">₹0</span>
+        <p id="delivery-date"></p>
+
+    </div>
+</section>
+        </div>
         </div>
     </main>
 
 
-
+<script src="js/checkout.js"></script>
 </body>
 </html>
