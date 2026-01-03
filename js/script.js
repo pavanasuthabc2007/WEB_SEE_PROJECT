@@ -62,7 +62,7 @@ function validateCheckout() {
     });
 }
 /*----filter category ----*/
-function filterCategory(category) {
+function filterCategory(category, btn = null) {
     let products = document.querySelectorAll(".product");
 
     products.forEach(product => {
@@ -77,10 +77,11 @@ function filterCategory(category) {
 
     // Highlight active button
     let buttons = document.querySelectorAll(".filter-btn");
-    buttons.forEach(btn => btn.classList.remove("active"));
+    buttons.forEach(b => b.classList.remove("active"));
 
-    event.target.classList.add("active");
+    if (btn) btn.classList.add("active");
 }
+
 /* =========================
    AUTO ADD ADD-TO-CART BUTTONS
 ========================= */let cart = JSON.parse(localStorage.getItem("cart")) || [];
