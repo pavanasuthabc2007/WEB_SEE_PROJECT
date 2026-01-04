@@ -39,7 +39,7 @@ function showOrderSummary() {
     // Show delivery date below total
     const today = new Date();
     const delivery = new Date(today);
-    delivery.setDate(today.getDate() + 3); // 3 days delivery
+    delivery.setDate(today.getDate() + 1); // 3 days delivery
 
     const options = { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' };
     deliveryDateEl.innerHTML = `📦 Estimated Delivery: <strong>${delivery.toLocaleDateString('en-IN', options)}</strong>`;
