@@ -1,13 +1,36 @@
 function showOrderSummary() {
+
+    // ===== FORM VALIDATION =====
+    const name = document.getElementById("fullName").value.trim();
+    const phone = document.getElementById("phoneNum").value.trim();
+    const address = document.getElementById("deliveryAddress").value.trim();
+    const pincode = document.getElementById("pincode").value.trim();
+
+    if (name.length < 3) {
+        alert("Please enter a valid name");
+        return;
+    }
+
+    if (!/^[6-9]\d{9}$/.test(phone)) {
+        alert("Please enter a valid 10-digit phone number");
+        return;
+    }
+
+    if (address.length < 10) {
+        alert("Please enter a valid address");
+        return;
+    }
+
+    if (!/^\d{6}$/.test(pincode)) {
+        alert("Please enter a valid 6-digit pincode");
+        return;
+    }
+
+    // ===== ORDER SUMMARY =====
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const orderItems = document.getElementById("order-items");
     const orderTotal = document.getElementById("summary-total-price");
     const deliveryDateEl = document.getElementById("delivery-date");
-
-    if (!orderItems || !orderTotal || !deliveryDateEl) {
-        console.error("Required HTML elements not found!");
-        return;
-    }
 
     orderItems.innerHTML = "";
     let total = 0;
@@ -33,16 +56,17 @@ function showOrderSummary() {
         `;
     });
 
-    // Show total on same line
+    // Total price
     orderTotal.innerText = `₹${total}`;
 
-    // Show delivery date below total
+    // Delivery date (+3 days)
     const today = new Date();
     const delivery = new Date(today);
-    delivery.setDate(today.getDate() + 3); // 3 days delivery
+    delivery.setDate(today.getDate() + 3);
 
     const options = { weekday: 'long', day: 'numeric', month: 'short', year: 'numeric' };
-    deliveryDateEl.innerHTML = `📦 Estimated Delivery: <strong>${delivery.toLocaleDateString('en-IN', options)}</strong>`;
+    deliveryDateEl.innerHTML =
+        `📦 Estimated Delivery: <strong>${delivery.toLocaleDateString('en-IN', options)}</strong>`;
 
     // Success message
     orderItems.innerHTML += `
